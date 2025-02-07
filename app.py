@@ -20,6 +20,7 @@ logging.basicConfig(
 )
 
 
+
 # Initialize the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key_here'  # Replace with a secure secret for production!
@@ -27,6 +28,12 @@ app.config['DATABASE'] = 'todo.db'  # SQLite database file
 
 # Initialize database helper functions (registers teardown for closing DB)
 init_app(app)
+
+# Since Flask 3.1.0 removed the before_first_request decorator,
+# we initialize the database explicitly within the app context.
+# Ensure the database is initialized on every app start:
+with app.app_context():
+    init_db()
 
 # Initialize Flask-Login for user authentication
 login_manager = LoginManager()
@@ -344,8 +351,4 @@ def delete_category(category_id):
 # Application Entry Point
 # -----------------------------------------------------------------------------
 if __name__ == '__main__':
-    # Since Flask 3.1.0 removed the before_first_request decorator,
-    # we initialize the database explicitly within the app context.
-    with app.app_context():
-        init_db()
     app.run(debug=True, port=5001)
