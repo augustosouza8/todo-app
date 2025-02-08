@@ -7,7 +7,7 @@ Database interactions use raw SQL, and user sessions are managed with Flask-Logi
 """
 
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user, UserMixin
 from db import get_db, init_db, init_app
 
@@ -167,7 +167,6 @@ def list_tasks():
     ''', (current_user.id,)).fetchall()
     return render_template('tasks.html', tasks=tasks)
 
-from flask import jsonify  # Add this at the top if not already imported
 
 @app.route('/tasks/<int:task_id>/update_completed', methods=['POST'])
 @login_required
