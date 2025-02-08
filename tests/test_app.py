@@ -4,7 +4,7 @@ import os
 import tempfile
 import pytest
 from app import app  # Import your Flask app
-from db import init_db
+from legacy.db import init_db
 
 
 @pytest.fixture
