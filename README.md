@@ -12,23 +12,17 @@ A simple Flask-based web application for managing tasks and categories with secu
 - **User Authentication System**
   - Secure registration and login flows
   - Session management and logout functionality
-  - Password security measures
 
 - **Task Management**
   - Create, read, update, and delete (CRUD) operations
   - Mark tasks as complete/incomplete
   - Rich text descriptions
-  - Due date tracking
 
 - **Category System**
   - Organize tasks with custom categories
-  - Category-based filtering
-  - Bulk category operations
 
 - **Search & Filter**
   - Real-time search functionality
-  - Multiple filter options
-  - Sort by various criteria
 
 - **Modern Interface**
   - Responsive design for all devices
@@ -40,6 +34,7 @@ A simple Flask-based web application for managing tasks and categories with secu
 ### Prerequisites
 
 - Python 3.8 or higher
+- PostgreSQL
 - pip package manager
 - Git
 
@@ -84,19 +79,15 @@ The application will be available at `http://localhost:5001` 🎉
 ### User Management
 1. Register a new account or login with existing credentials
 2. Secure password recovery flow available
-3. Profile customization options
 
 ### Task Operations
 1. Create new tasks with:
    - Title and description
-   - Due date
-   - Priority level
    - Category assignment
 2. Manage existing tasks:
    - Edit task details
    - Toggle completion status
    - Delete tasks
-   - Bulk actions available
 
 ### Category Management
 1. Create custom categories
@@ -104,13 +95,8 @@ The application will be available at `http://localhost:5001` 🎉
 3. Delete unused categories
 4. Assign/remove tasks from categories
 
-### Search & Filter
-1. Search tasks by title/description
-2. Filter by:
-   - Status (complete/incomplete)
-   - Due date
-   - Priority
-   - Category
+### Search
+1. Search tasks by title
 
 ## 🧪 Testing
 
@@ -130,12 +116,9 @@ pytest --cov=app tests/
 ```
 .
 ├── app.py              # Application core
-├── db.py              # Database configuration
 ├── requirements.txt    # Dependencies
 ├── static/            # Static assets
-│   ├── css/          # Stylesheets
 │   ├── js/           # JavaScript files
-│   └── img/          # Images
 ├── templates/         # HTML templates
 └── tests/            # Test suite
     ├── conftest.py   # Test configuration
