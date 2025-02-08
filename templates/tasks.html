@@ -57,8 +57,8 @@
                 <td>{{ task.title }}</td>
                 <td>{{ task.description }}</td>
                 <td>
-                    {% if task.category_name %}
-                        {{ task.category_name }}
+                    {% if task.category %}
+                        {{ task.category.name }}
                     {% else %}
                         None
                     {% endif %}
